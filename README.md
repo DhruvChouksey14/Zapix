@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Turborepo starter
 
 This Turborepo starter is maintained by the Turborepo core team.
@@ -157,3 +158,7 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
 - [Configuration Options](https://turborepo.dev/docs/reference/configuration)
 - [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+=======
+# Zapix
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f88bf72f-78b5-4108-ba02-7ba34022e9a7" />
+>>>>>>> 4148191dce9a79160b1cab1b2cade6b396541601

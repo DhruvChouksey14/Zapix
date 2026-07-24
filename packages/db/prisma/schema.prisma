@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+  zaps     Zap[]
+}
+
+model Zap {
+  id          String   @id @default(uuid())
+  name        String   @default("Untitled")
+  userId      Int
+  zapRun      ZapRun[]
+  triggerId   String
+  trigger     Trigger?
+  actions     Action[]
+  user        User     @relation(fields: [userId], references: [id])
+  createdDate DateTime @default(now())
+  isActive    Boolean  @default(false)
+}
+
+model AvailableTriggers {
+  id      String    @id @default(uuid())
+  type    String    @unique
+  trigger Trigger[]
+  image   String
+}
+
+model Trigger {
+  id        String            @id @default(uuid())
+  metadata  Json              @default("{}")
+  triggerId String
+  zapId     String            @unique
+  zap       Zap               @relation(fields: [zapId], references: [id])
+  trigger   AvailableTriggers @relation(fields: [triggerId], references: [id])
+}
+
+model Action {
+  id           String           @id @default(uuid())
+  actionId     String
+  zapId        String           
+  zap          Zap              @relation(fields: [zapId], references: [id])
+  action       AvailableActions @relation(fields: [actionId], references: [id])
+  sortingOrder Int              @default(0)
+  metadata     Json             @default("{}")
+}
+
+model AvailableActions {
+  id     String   @id @default(uuid())
+  type   String   @unique
+  action Action[]
+  image  String
+}
+
+model ZapRun {
+  id           String        @id @default(uuid())
+  zapId        String        
+  zap          Zap           @relation(fields: [zapId], references: [id])
+  zapRunOutbox ZapRunOutbox?
+  metadata     Json
+}
+
+model ZapRunOutbox {
+  id       String @id @default(uuid())
+  zapRunId String @unique
+  zapRun   ZapRun @relation(fields: [zapRunId], references: [id])
+}
