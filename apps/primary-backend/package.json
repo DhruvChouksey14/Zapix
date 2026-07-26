@@ -13,6 +13,7 @@
 
   "dependencies": {
      "@repo/email": "*",
+     "@repo/types" : "*",
     "@types/cors": "^2.8.19",
     "cors": "^2.8.6",
     "zod": "^4.4.3"
