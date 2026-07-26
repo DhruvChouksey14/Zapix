@@ -6,6 +6,6 @@ export function workflowTemplate(body: string) {
 
         <hr/>
 
-        <p>Sent automatically by ZapMate.</p>
+        <p>Sent automatically by Zapix.</p>
     `;
 }

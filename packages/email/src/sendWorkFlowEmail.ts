@@ -7,7 +7,7 @@ export async function sendWorkflowEmail(
     body: string
 ) {
     await transporter.sendMail({
-        from: `"ZapMate" <${process.env.MAIL_USER}>`,
+        from: `"Zapix" <${process.env.MAIL_USER}>`,
         to,
         subject,
         html: workflowTemplate(body),

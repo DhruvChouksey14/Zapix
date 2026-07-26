@@ -6,9 +6,9 @@ export async function sendWelcomeEmail(
     name: string
 ) {
     await transporter.sendMail({
-        from: `"ZapMate" <${process.env.MAIL_USER}>`,
+        from: `"Zapix" <${process.env.MAIL_USER}>`,
         to,
-        subject: "Welcome to ZapMate",
+        subject: "Welcome to Zapix",
         html: welcomeTemplate(name),
     });
 }
